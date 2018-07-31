@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/server.js",
-    "dev":"nodemon ./src/server.js"
+    "dev": "nodemon ./src/server.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,10 @@
   },
   "homepage": "https://github.com/FACG5/w5-stackoverflow#readme",
   "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "request": "^2.87.0",
     "tap-spec": "^5.0.0",
     "tape": "^4.9.1"
   }
