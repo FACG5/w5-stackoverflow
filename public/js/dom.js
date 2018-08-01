@@ -3,17 +3,25 @@ const result = document.getElementById("result");
 const inputlang = document.getElementById("inputlang");
 const errors = document.getElementById("error");
 
-btn.addEventListener("click", function(e) {
+const validation = arr => {
+  if (arr.has_more === false) {
+    const error = document.createElement("h1");
+    error.classList.add("header");
+    error.textContent = "Sorry  Not Found";
+    errors.appendChild(error);
+  }
+};
+
+btn.addEventListener("click", e => {
   e.preventDefault();
-  let inputvalue = inputlang.value;
+  const inputvalue = inputlang.value;
   result.textContent = "";
   errors.textContent = "";
 
-  if (inputlang.value.trim() == "") {
-    alert("Please Enter Name");
+  if (inputlang.value.trim() === "") {
+    alert("Please Enter a programming language");
     return;
   }
-
   feachApi(inputvalue, "POST", "/search", arr => {
     validation(arr);
     rendering(arr);
@@ -23,7 +31,7 @@ btn.addEventListener("click", function(e) {
 const rendering = arr => {
   arr.items.forEach(element => {
     const list = document.createElement("div");
-    //linkQues
+    // linkQues
     const detQues = document.createElement("div");
     const titles = document.createElement("a");
     const tag = document.createElement("div");
@@ -60,14 +68,4 @@ const rendering = arr => {
     list.classList.add("list");
     result.appendChild(list);
   });
-};
-
-const validation = arr => {
-  if (arr.has_more === false) {
-    const error = document.createElement("h1");
-    error.classList.add("header");
-    error.textContent = "Sorry  Not Found";
-    errors.appendChild(error);
-    return;
-  }
 };
