@@ -1,13 +1,22 @@
 @import "https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple";
 @import "https://fonts.googleapis.com/css?family=Arimo|Titillium+Web|Hind";
+@import 'https://fonts.googleapis.com/css?family=Cairo';
 body {
   font-family: Arimo, Arial, Helvetica, lucida grande, sans-serif;
   color: #000;
 }
 .header {
-  font-family: Rancho;
+  font-family: 'Cairo', sans-serif;
   margin-top: 5%;
   text-align: center;
+}
+header img{
+height:90;
+width:170px;
+
+}
+header h1{
+  font-family: 'Cairo', sans-serif;
 }
 #inputlang {
   outline: none;
@@ -22,7 +31,7 @@ body {
 }
 #btn {
   background-color: #f48024;
-  color: white;
+  color: black;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -81,6 +90,7 @@ body {
   display: grid;
   grid-template-columns: 20% 70%;
   grid-gap: 5px;
+
 }
 
 .ownner {
