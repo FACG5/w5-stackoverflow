@@ -37,11 +37,13 @@ const serverStaticFile = (request, response) => {
   });
 };
 
-const handelError = res => {
-  res.writeHead(404, {
-    "content-type": "text/html"
+const handelError = response => {
+  response.writeHead(404, {"content-type": "text/html"  });
+  read(path.join(__dirname, "..", "..", "public", "errp.html"), (err, res) => {
+    if (err) {
+      response.end(err.message);
+    } else response.end(res);
   });
-  res.end("<h1>page not found 404 </h1>");
 };
 
 const handelgetdata = (request, response) => {
