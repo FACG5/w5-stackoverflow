@@ -51,29 +51,21 @@ const handelgetdata = (request, response) => {
   });
 
   request.on("end", () => {
-    console.log(data);
-    const ops={
-      url :
-      "https://api.stackexchange.com/2.2/questions?order=desc&sort=creation&site=stackoverflow&tagged="+
-      data,
+    const ops = {
+      url:
+        "https://api.stackexchange.com/2.2/questions?order=desc&sort=creation&site=stackoverflow&tagged=" +
+        data,
       method: "GET",
       gzip: true
     };
 
-    
-    
-    // response.writeHead(200, { "content-type": "text/html" });
-    myRquest(ops,(err, res,body) =>{  
-    if(err){
-      console.log("d")
-    }
-      else if(body){
-        
-        response.end(JSON.stringify(body))
-
+    myRquest(ops, (err, res, body) => {
+      if (err) {
+        response.end(err.message);
+      } else if (body) {
+        response.end(JSON.stringify(body));
       }
- 
-    })
+    });
   });
 };
 

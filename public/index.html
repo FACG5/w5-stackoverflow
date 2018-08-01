@@ -8,16 +8,23 @@
     <link rel="stylesheet" href="public/css/style.css">
     <title>Document</title>
 </head>
+<header class="header">
+    <h1>Fast Research On Stackoverflow</h1>
+</header>
 
 <body>
-    <form method="post">
-        <input type="text" id="inputlang">
-        <button id="btn">search</button>
-    </form>
-    <h1>mmmmmm</h1>
-    <div id="result">
-
+    <main class="main">
+        <form method="post">
+            <input type="text" id="inputlang" aria-label="input">
+            <button id="btn">Search</button>
+        </form>
+    </main>
+    <section id="sec">
+        <div id="error"></div>
+        <div id="result">
+    </section>
     </div>
+
     <script src="/public/js/fetch.js"></script>
     <script src="/public/js/logic.js"></script>
     <script src="/public/js/dom.js"></script>
