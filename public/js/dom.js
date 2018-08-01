@@ -2,6 +2,7 @@ const btn = document.getElementById("btn");
 const result = document.getElementById("result");
 const inputlang = document.getElementById("inputlang");
 const errors = document.getElementById("error");
+const loaddiv= document.getElementById("loadingimg");
 
 const validation = arr => {
   if (arr.has_more === false) {
@@ -18,17 +19,26 @@ btn.addEventListener("click", e => {
   result.textContent = "";
   errors.textContent = "";
 
+
   if (inputlang.value.trim() === "") {
     alert("Please Enter a programming language");
     return;
   }
+  const loadim = document.createElement("img");
+  loadim.src="public/img/loading.gif";
+  loaddiv.appendChild(loadim);
   feachApi(inputvalue, "POST", "/search", arr => {
+     loaddiv.style.display="none";
     validation(arr);
     rendering(arr);
   });
 });
 
+
+
+
 const rendering = arr => {
+
   arr.items.forEach(element => {
     const list = document.createElement("div");
     // linkQues

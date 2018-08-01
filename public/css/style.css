@@ -83,13 +83,23 @@ header h1{
   text-decoration: none;
   cursor: pointer;
 }
-
+#loadingimg{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+#loadingimg img {
+  width: 70px;
+  height: 70px;
+}
 .list {
   margin-left: 5%;
   margin-right: 5%;
   display: grid;
   grid-template-columns: 20% 70%;
   grid-gap: 5px;
+
 
 }
 
