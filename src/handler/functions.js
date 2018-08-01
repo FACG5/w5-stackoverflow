@@ -24,7 +24,7 @@ const serverStaticFile = (request, response) => {
     jpg: "image/jpg",
     png: "image/png",
     json: "application/json",
-    jpeg: "image/jpg"
+    gif: "image/gif"
   };
   response.writeHead(200, {
     "content-type": contenttype[extention]
