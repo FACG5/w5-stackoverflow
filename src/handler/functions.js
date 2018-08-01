@@ -38,7 +38,7 @@ const serverStaticFile = (request, response) => {
 };
 
 const handelError = response => {
-  response.writeHead(404, {"content-type": "text/html"  });
+  response.writeHead(404, { "content-type": "text/html" });
   read(path.join(__dirname, "..", "..", "public", "errp.html"), (err, res) => {
     if (err) {
       response.end(err.message);
@@ -53,21 +53,23 @@ const handelgetdata = (request, response) => {
   });
 
   request.on("end", () => {
-    const ops = {
-      url:
-        "https://api.stackexchange.com/2.2/questions?order=desc&sort=creation&site=stackoverflow&tagged=" +
-        data,
-      method: "GET",
-      gzip: true
-    };
-
-    myRquest(ops, (err, res, body) => {
-      if (err) {
-        response.end(err.message);
-      } else if (body) {
-        response.end(JSON.stringify(body));
-      }
-    });
+    if (data) {
+      const ops = {
+        url: `https://api.stackexchange.com/2.2/questions?order=desc&sort=creation&site=stackoverflow&tagged=${data}`,
+        method: "GET",
+        gzip: true
+      };
+      myRquest(ops, (err, res, body) => {
+        if (err) {
+          response.end(err.message);
+        } else if (body) {
+          response.end(JSON.stringify(body));
+        }
+      });
+    } else {
+      response.writeHead(500, { "content-type": "text/html" });
+      response.end("Forbidden");
+    }
   });
 };
 
