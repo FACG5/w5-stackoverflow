@@ -10,7 +10,7 @@ const router = (req, res) => {
     handelHomePage(req, res);
   } else if (endponit.includes("public")) {
     serverStaticFile(req, res);
-  } else if (endponit === "/search") {
+  } else if (endponit === "/search" && req.method === 'POST') {
     handelgetdata(req, res);
   } else {
     handelError(res);
