@@ -1,5 +1,5 @@
 const read = require("./read.js");
-const myRquest = require("./reqhttp");
+const requestserver = require("./reqhttp");
 const path = require("path");
 
 const handelHomePage = (request, response) => {
@@ -10,7 +10,9 @@ const handelHomePage = (request, response) => {
   read(path.join(__dirname, "..", "..", "public", "index.html"), (err, res) => {
     if (err) {
       response.end(err.message);
-    } else response.end(res);
+    } else {
+      response.end(res);
+    }
   });
 };
 
@@ -59,7 +61,7 @@ const handelgetdata = (request, response) => {
         method: "GET",
         gzip: true
       };
-      myRquest(ops, (err, res, body) => {
+      requestserver(ops, (err, res, body) => {
         if (err) {
           response.end(err.message);
         } else if (body) {
@@ -67,7 +69,7 @@ const handelgetdata = (request, response) => {
         }
       });
     } else {
-      response.writeHead(500, { "content-type": "text/html" });
+      response.writeHead(403, { "content-type": "text/html" });
       response.end("Forbidden");
     }
   });

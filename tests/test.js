@@ -2,11 +2,7 @@ const test = require("tape");
 const supertest = require("supertest");
 const router = require("../src/router.js");
 
-test("Initialise", t => {
-  let num = 2;
-  t.equal(num, 2, "Should return 2");
-  t.end();
-});
+
 
 test("Home route returns a status code of 200", t => {
   supertest(router)
@@ -15,7 +11,6 @@ test("Home route returns a status code of 200", t => {
     .expect("Content-Type", /html/)
     .end((err, res) => {
       t.error(err);
-      t.equal(res.statusCode, 200, "Should return 200");
       t.end();
     });
 });
@@ -35,11 +30,11 @@ test("Erorr page status code", t => {
 test("Forbidden  ", t => {
   supertest(router)
     .post("/search")
-    .expect(500)
+    .expect(403)
     .expect("Content-Type", /html/)
     .end((err, res) => {
       t.error(err);
-      t.equal(res.statusCode, 500, "Forbidden");
+      t.equal(res.statusCode, 403, "Forbidden");
       t.end();
     });
 });
