@@ -2,15 +2,16 @@ const {
   handelHomePage,
   serverStaticFile,
   handelError,
-  handelgetdata
-} = require("./handler/functions.js");
+  handelgetdata,
+} = require('./handler/functions.js');
+
 const router = (req, res) => {
   const endponit = req.url;
-  if (endponit === "/") {
+  if (endponit === '/') {
     handelHomePage(req, res);
-  } else if (endponit.includes("public")) {
+  } else if (endponit.includes('public')) {
     serverStaticFile(req, res);
-  } else if (endponit === "/search" && req.method === 'POST') {
+  } else if (endponit === '/search' && req.method === 'POST') {
     handelgetdata(req, res);
   } else {
     handelError(res);
